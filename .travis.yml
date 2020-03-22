@@ -1,13 +1,53 @@
 language: cpp
-compiler: g++
+sudo: false
+
+addons:
+    apt:
+        config:
+            retries: true
+        sources: &common_sources
+            - ubuntu-toolchain-r-test
+        packages: &common_packages
+            - gcc-8
+            - g++-8
+
+matrix:
+    include:
+        # OS and Compiler variations
+        # ----------------------------------------------------------------
+        #
+        # Ubuntu Bionic, gcc 8
+        - os: linux
+          dist: bionic
+          compiler: gcc
+          env:
+              - T=debug C=""
+              - OVERRIDE_CC="CC=gcc-8" OVERRIDE_CXX="CXX=g++-8"
+          addons:
+              apt:
+                  sources:
+                      - *common_sources
+                  packages:
+                      - *common_packages
+        # Ubuntu Xenial, clang 7
+        - os: linux
+          dist: xenial
+          compiler: clang
+          env:
+              - T=debug C=""
+              - OVERRIDE_CC="CC=clang-7" OVERRIDE_CXX="CXX=clang++-7"
+          addons:
+              apt:
+                  sources:
+                      - *common_sources
+                      - llvm-toolchain-xenial-7
+                  packages:
+                      - *common_packages
+                      - clang-7
 
 before_install:
-- sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-- sudo apt-get update -qq
-
-install:
-- sudo apt-get install -qq g++-6.3
-- export CXX="g++-6.3"
+    - eval "${OVERRIDE_CC}"
+    - eval "${OVERRIDE_CXX}"
 
 #ijdfsjdfls
 script:
