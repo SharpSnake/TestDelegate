@@ -47,7 +47,7 @@ public:
 	*/
 	Delegate() = default;
 
-	Delegate( nullptr_t )
+	Delegate( std::nullptr_t )
 		: Delegate()	{}
 
 	/*
@@ -75,7 +75,7 @@ public:
 	/*
 	*	Empty this delegate
 	*/
-	my_type& operator=( nullptr_t )	{
+	my_type& operator=( std::nullptr_t )	{
 		m_Binder.reset();
 		return *this;
 	}
@@ -130,7 +130,7 @@ public:
 	*/
 	MulticastDelegate() = default;
 
-	MulticastDelegate( nullptr_t )
+	MulticastDelegate( std::nullptr_t )
 		: MulticastDelegate()	{}
 
 	/*
@@ -144,7 +144,7 @@ public:
 	/*
 	*	Clear invocationList
 	*/
-	my_type& operator=( nullptr_t )
+	my_type& operator=( std::nullptr_t )
 	{
 		m_InvocationList.clear();
 		return *this;
@@ -201,8 +201,8 @@ public:
 	}
 
 	// Add or remove an empty delegate is not allowed
-	void operator+=( nullptr_t ) = delete;
-	void operator-=( nullptr_t ) = delete;
+	void operator+=( std::nullptr_t ) = delete;
+	void operator-=( std::nullptr_t ) = delete;
 
 private:
 	std::list< item_type >				m_InvocationList;
