@@ -29,21 +29,6 @@ matrix:
                       - *common_sources
                   packages:
                       - *common_packages
-        # Ubuntu Xenial, clang 7
-        - os: linux
-          dist: xenial
-          compiler: clang
-          env:
-              - T=debug C=""
-              - OVERRIDE_CC="CC=clang-7" OVERRIDE_CXX="CXX=clang++-7"
-          addons:
-              apt:
-                  sources:
-                      - *common_sources
-                      - llvm-toolchain-xenial-7
-                  packages:
-                      - *common_packages
-                      - clang-7
 
 before_install:
     - eval "${OVERRIDE_CC}"
@@ -51,5 +36,5 @@ before_install:
 
 #ijdfsjdfls
 script:
-  - gcc ./Delegate/TestDelegate.cpp -std=c++11 -o TestDelegate
+  - g++ ./Delegate/TestDelegate.cpp -std=c++11 -o TestDelegate
 #  - ./TestDelegate
