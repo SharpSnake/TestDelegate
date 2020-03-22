@@ -1,3 +1,4 @@
+# Referred to: https://github.com/greenplum-db/gpdb/blob/master/.travis.yml
 language: cpp
 sudo: false
 
@@ -8,21 +9,17 @@ addons:
         sources: &common_sources
             - ubuntu-toolchain-r-test
         packages: &common_packages
-            - gcc-8
-            - g++-8
+            - gcc-7
+            - g++-7
 
 matrix:
     include:
-        # OS and Compiler variations
-        # ----------------------------------------------------------------
-        #
-        # Ubuntu Bionic, gcc 8
         - os: linux
           dist: bionic
           compiler: gcc
           env:
-              - T=debug C=""
-              - OVERRIDE_CC="CC=gcc-8" OVERRIDE_CXX="CXX=g++-8"
+              - T=release C=""
+              - OVERRIDE_CC="CC=gcc-7" OVERRIDE_CXX="CXX=g++-7"
           addons:
               apt:
                   sources:
@@ -34,7 +31,6 @@ before_install:
     - eval "${OVERRIDE_CC}"
     - eval "${OVERRIDE_CXX}"
 
-#ijdfsjdfls
 script:
   - g++ ./Delegate/TestDelegate.cpp -std=c++11 -o TestDelegate
-#  - ./TestDelegate
+  - ./TestDelegate

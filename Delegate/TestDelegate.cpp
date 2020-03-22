@@ -12,7 +12,7 @@ enum MouseButtons	{
 	Right
 };
 
-inline std::ostream& operator<<( std::ostream &os, const MouseButtons &btn )	{
+ostream& operator<<( ostream &os, const MouseButtons &btn )	{
 	switch ( btn )
 	{
 	case Left:
@@ -29,7 +29,7 @@ class Button
 public:
 	Button()
 		: MouseClick{ &Button::OnClickMyself, this }	{}
-	
+
 	~Button()	{ MouseClick = nullptr; }	// you can do this, but it's not necessary
 
 public:
@@ -40,12 +40,12 @@ public:
 		if( MouseClick )
 			MouseClick( btn, x, y );
 		else
-			std::cout << "No delegates registered to ButtonClickEvent" << std::endl;
+			cout << "No delegates registered to ButtonClickEvent" << endl;
 	}
 
 private:
 	void OnClickMyself( MouseButtons btn, int x, int y )	{
-		std::cout<< "Btnitself CallBack,  " << btn << ":\t( " << x << ", " << y << " )" << std::endl;
+		cout<< "Btnitself CallBack,  " << btn << ":\t( " << x << ", " << y << " )" << endl;
 	}
 };
 
@@ -63,18 +63,17 @@ public:
 
 public:
 	void m_Button_Click_CallBack1( MouseButtons btn, int x, int y )	{
-		std::cout<< "Dialog CallBack1, " << btn << ":\t( " << x << ", " << y << " )" << std::endl;
+		cout<< "Dialog CallBack1, " << btn << ":\t( " << x << ", " << y << " )" << endl;
 	}
 
 	// CallBack2 only call once.
 	void m_Button_Click_CallBack2( MouseButtons btn, int x, int y )
 	{
-		std::cout<< "Dialog CallBack2, " << btn << ":\t( " << x << ", " << y << " )" << std::endl;
-		m_Button->MouseClick -= { &VDialog::m_Button_Click_CallBack2, this };
+		cout<< "Dialog CallBack2, " << btn << ":\t( " << x << ", " << y << " )" << endl;
 	}
 
 	void m_Button_Click_CallBack3( MouseButtons btn, int x, int y )	{
-		std::cout<< "Dialog CallBack3, " << btn << ":\t( " << x << ", " << y << " )" << std::endl;
+		cout<< "Dialog CallBack3, " << btn << ":\t( " << x << ", " << y << " )" << endl;
 	}
 
 private:
@@ -82,7 +81,7 @@ private:
 };
 
 void GlobalOnBtnClk( MouseButtons btn, int x, int y )	{
-	std::cout << "Global CallBack, " << btn << ":\t" << x << "\t" << y << std::endl;
+	cout << "Global CallBack, " << btn << ":\t" << x << "\t" << y << endl;
 }
 
 
@@ -97,30 +96,30 @@ void Test_DialogBtnClick()
 
 	MouseEventHandler singleCallBack = { &VDialog::m_Button_Click_CallBack2, dialog };
 	singleCallBack = { &VDialog::m_Button_Click_CallBack1, dialog };
-	singleCallBack = []( MouseButtons btn, int x, int y ){ std::cout << "single lambda\t" << x << "\t" << y << std::endl; };
+	singleCallBack = []( MouseButtons btn, int x, int y ){ cout << "single lambda\t" << x << "\t" << y << endl; };
 
 	if( singleCallBack )
 		singleCallBack( Left, 11, 55 );
 	singleCallBack = nullptr;
-	std::cout << std::endl;
+	cout << endl;
 
-	
+
 	// MulticastDelegate
 	button->MouseClick += GlobalOnBtnClk;
-	button->MouseClick += []( MouseButtons btn, int x, int y ){ std::cout << "lambda Clk " << btn << "\t" << x << "\t" << y << std::endl; };
+	button->MouseClick += []( MouseButtons btn, int x, int y ){ cout << "lambda Clk " << btn << "\t" << x << "\t" << y << endl; };
 	button->DoClick( Left, 100, 300 );
-	std::cout << std::endl;
+	cout << endl;
 
 	// remove some items from MulticastDelegate
 	button->MouseClick -= { &VDialog::m_Button_Click_CallBack3, dialog };
 	button->MouseClick -= GlobalOnBtnClk;
-	button->MouseClick -= []( MouseButtons btn, int x, int y ){ std::cout << "lambda Clk " << btn << "\t" << x << "\t" << y << std::endl; };
+	button->MouseClick -= []( MouseButtons btn, int x, int y ){ cout << "lambda Clk " << btn << "\t" << x << "\t" << y << endl; };
 	button->DoClick( Right, 500, 900 );
-	std::cout << std::endl;
+	cout << endl;
 
 	button->MouseClick = nullptr;
 	button->DoClick( Left, 1, 1 );
-	std::cout << std::endl;
+	cout << endl;
 
 	delete dialog;
 	delete button;
@@ -129,6 +128,5 @@ void Test_DialogBtnClick()
 
 int main(int argc, char* argv[])
 {
-	while( 1 )
-		Test_DialogBtnClick();
+	Test_DialogBtnClick();
 }
