@@ -1,13 +1,21 @@
+sudo: false
+dist: trusty
 language: cpp
-compiler: g++
-
-before_install:
-- sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-- sudo apt-get update -qq
-
+os:
+  - linux
+compiler:
+  - gcc
 install:
-- sudo apt-get install -qq g++-7.4
-- export CXX="g++-7.4"
+# /usr/bin/gcc is 4.6 always, but gcc-X.Y is available.
+- if [[ $CXX = g++ ]]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-precise-3.5 # not sure why we needed this
+  packages:
+    - gcc-4.9
+    - g++-4.9
 
 script:
   - gcc ./Delegate/TestDelegate.cpp -std=c++11 -o TestDelegate
