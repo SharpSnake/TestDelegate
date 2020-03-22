@@ -10,6 +10,6 @@ install:
 - export CXX="g++-4.9"
 
 #ijdfsjdfls
-script:	install:
-  - gcc ./Delegate/TestDelegate.cpp -std=c++11 -o TestDelegate	- sudo apt-get install -qq g++-4.9
+script:
+  - gcc ./Delegate/TestDelegate.cpp -std=c++11 -o TestDelegate
 #  - ./TestDelegate
