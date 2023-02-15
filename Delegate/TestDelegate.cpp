@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <boost/version.hpp>
 #include <boost/filesystem.hpp>
 
 #include "Delegate.hpp"
@@ -139,6 +140,6 @@ int main(int argc, char* argv[])
 {
 	Test_DialogBtnClick();
 
-	cout << endl << "Test boost dependency:" << endl;
+	cout << endl << "Test boost" << "(" << BOOST_LIB_VERSION << ")" << " dependency:" << endl;
 	Test_BoostDep( argv[ 0 ] );
 }
