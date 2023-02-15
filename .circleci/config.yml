@@ -15,7 +15,7 @@ jobs:
           command: |
             apt-get update
             apt-get install -y \
-                libboost-all-dev \
+                libboost-dev \
                 cmake \
 
       - run: mkdir -p build && cd build
