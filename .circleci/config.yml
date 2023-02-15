@@ -13,6 +13,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
+            add-apt-repository ppa:mhier/libboost-latest
             apt-get update
             apt-get install -y \
                 libboost1.79-dev \
