@@ -218,3 +218,4 @@ Delegate.VC.db
 .vs/Delegate/v15/Browse.VC.opendb
 .vs/Delegate/v15/Solution.VC.db
 /.vs
+/CMakeProject
