@@ -6,7 +6,7 @@
 Delegate
 ========
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4a2f2d00890649e6bf42a43962b30a92)](https://app.codacy.com/manual/SharpSnake/Delegate?utm_source=github.com&utm_medium=referral&utm_content=SharpSnake/Delegate&utm_campaign=Badge_Grade_Dashboard)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/fd38b54e4dfa4fa8acd13cc9b591b039)](https://www.codacy.com/gh/SharpSnake/TestDelegate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SharpSnake/TestDelegate&amp;utm_campaign=Badge_Grade)
 [![Build status](https://ci.appveyor.com/api/projects/status/f2on7ikl00nrs8xk?svg=true)](https://ci.appveyor.com/project/SharpSnake/testdelegate)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/SharpSnake/TestDelegate/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/SharpSnake/TestDelegate/tree/master)
 ![GitHub top language](https://img.shields.io/github/languages/top/SharpSnake/Delegate)
