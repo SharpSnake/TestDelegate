@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <boost/filesystem.hpp>
 
 #include "Delegate.hpp"
 
@@ -125,8 +126,19 @@ void Test_DialogBtnClick()
 	delete button;
 }
 
+void Test_BoostDep( const char *arg1 )
+{
+	boost::filesystem::path p( arg1 ), name( p.filename() );
+
+	cout << "dir " << p.parent_path() << " filename " << name << " has stem " << name.stem()
+		<< " and extension " << name.extension() << "\n";
+}
+
 
 int main(int argc, char* argv[])
 {
 	Test_DialogBtnClick();
+
+	cout << endl << "Test boost dependency:" << endl;
+	Test_BoostDep( argv[ 0 ] );
 }
