@@ -25,7 +25,8 @@ jobs:
                 cmake \
 
       - run: mkdir -p build && cd build
-      - run: g++ -o TestDelegate -O2 ./Delegate/TestDelegate.cpp -std=c++17 -lboost_filesystem
+      - run: g++ -shared -o Dll_foo.so -O2 ./Dll_foo/Tictoc.cpp -std=c++20
+      - run: g++ Dll_foo.so -O2 -I ./Dll_foo ./Delegate/TestDelegate.cpp -o TestDelegate -std=c++17 -lboost_filesystem
       - run: ./TestDelegate
 
   build_macos:
