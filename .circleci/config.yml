@@ -5,9 +5,10 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build_gcc_latest:
+  build_ubuntu:
     docker:
-      - image: gcc:latest
+      - image: ubuntu:22.04
+ #     - image: gcc:latest
     steps:
       - checkout
       - run:
@@ -15,11 +16,11 @@ jobs:
           command: |
             apt-get update
             apt-get install -y \
-                libboost-dev \
+                libboost-filesystem-dev \
                 cmake \
 
       - run: mkdir -p build && cd build
-      - run: g++ -o TestDelegate ./Delegate/TestDelegate.cpp -std=c++17 -lboost_filesystem
+      - run: g++ -o TestDelegate -O2 ./Delegate/TestDelegate.cpp -std=c++17 -lboost_filesystem
       - run: ./TestDelegate
 
 # Invoke jobs via workflows
@@ -27,4 +28,4 @@ jobs:
 workflows:
   workflow1:
     jobs:
-      - build_gcc_latest
+      - build_ubuntu
