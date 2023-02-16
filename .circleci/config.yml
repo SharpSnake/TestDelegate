@@ -6,9 +6,9 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build_ubuntu:
-    runs-on: ubuntu:22.04
     docker:
-      - image: gcc:latest
+      - image: ubuntu:22.04
+      #- image: gcc:latest
     steps:
       - checkout
       - run:
@@ -17,6 +17,7 @@ jobs:
             apt-get update
             apt-get install -y \
                 libboost-filesystem-dev \
+                build-essential \
                 cmake \
 
       - run: mkdir -p build && cd build
