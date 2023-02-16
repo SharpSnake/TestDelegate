@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
+#include <thread>
 #include <boost/version.hpp>
 #include <boost/filesystem.hpp>
 
+#include <Tictoc.h>
 #include "Delegate.hpp"
 
 using namespace std;
@@ -138,8 +140,16 @@ void Test_BoostDep( const char *arg1 )
 
 int main(int argc, char* argv[])
 {
+	Dll::Foo::Tictoc tt( "watch 1" );
+	tt.Tic();
+
 	Test_DialogBtnClick();
+	this_thread::sleep_for( 1s );
 
 	cout << endl << "Test boost" << "(" << BOOST_LIB_VERSION << ")" << " dependency:" << endl;
 	Test_BoostDep( argv[ 0 ] );
+	this_thread::sleep_for( 100ms );
+
+	auto[ _h, _s, _ms ] = tt.Toc();
+	cout << endl << "Total time: " << _s << " seconds and " << _ms << " milliseconds" << endl;
 }

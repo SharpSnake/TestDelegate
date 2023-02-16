@@ -9,6 +9,10 @@ jobs:
     docker:
       - image: ubuntu:22.04
       #- image: gcc:latest
+
+    environment:
+      NUM_THERADS: 3
+
     steps:
       - checkout
       - run:
@@ -23,6 +27,12 @@ jobs:
       - run: mkdir -p build && cd build
       - run: g++ -o TestDelegate -O2 ./Delegate/TestDelegate.cpp -std=c++17 -lboost_filesystem
       - run: ./TestDelegate
+
+  build_macos:
+    macos:
+        xcode: 14.2.0
+    steps:
+      - checkout
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
