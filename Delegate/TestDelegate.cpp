@@ -133,8 +133,8 @@ void Test_BoostDep( const char *arg1 )
 {
 	boost::filesystem::path p( arg1 ), name( p.filename() );
 
-	cout << "dir " << p.parent_path() << " filename " << name << " has stem " << name.stem()
-		<< " and extension " << name.extension() << "\n";
+	cout << "dir " << boost::filesystem::canonical( p.parent_path() ) << " filename " << name << 
+		" has stem " << name.stem() << " and extension " << name.extension() << "\n";
 }
 
 

@@ -23,4 +23,7 @@
   <ItemGroup>
     <Text Include="CMakeLists.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.circleci\config.yml" />
+  </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 #define _DLL_FOO_H
 
 #include <chrono>
+#include <string>
 #include <string_view>
 #include "Export.h"
 
