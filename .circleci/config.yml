@@ -6,12 +6,12 @@ version: 2.1
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   build_ubuntu_manually:
-    #docker:
-    #  - image: ubuntu:22.04
+    docker:
+      - image: ubuntu:22.04
       #- image: gcc:latest
-    machine:
-      image: ubuntu-2004:current
-    resource_class: arm.large
+    #machine:
+    #  image: ubuntu-2004:current
+    #resource_class: arm.large
     
     environment:
       NUM_THERADS: 3
