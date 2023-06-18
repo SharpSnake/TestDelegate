@@ -220,3 +220,5 @@ Delegate.VC.db
 /.vs
 /CMakeProject
 /Libs
+
+!/Linux_old/Delegate/Delegate.vcxproj.user

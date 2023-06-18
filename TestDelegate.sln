@@ -11,6 +11,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dll_foo", "Dll_foo\Dll_foo.vcxproj", "{8A7A8A6F-A90D-4044-8CDD-9EFAC74B0A50}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Linux_old", "Linux_old", "{31836E9B-E53E-428D-8AE8-31A637D4DA26}"
+	ProjectSection(SolutionItems) = preProject
+		Linux_old\注意事项.txt = Linux_old\注意事项.txt
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Dll_foo", "Linux_old\Dll_foo\Dll_foo.vcxproj", "{64C18E7C-4F90-40F2-9A94-53B6D61ED240}"
 EndProject

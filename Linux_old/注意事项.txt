@@ -1,0 +1,8 @@
+1、跨平台连接管理器连接失败
+	可能是Linux没有启动ssh服务，运行以下命令：
+	sudo apt install openssh-server
+	sudo service ssh start
+
+2、安装boost命令
+	sudo apt-get update
+	sudo apt-get install libboost-all-dev

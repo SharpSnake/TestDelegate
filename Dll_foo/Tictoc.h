@@ -24,6 +24,8 @@ class DLLFOO_DLL Tictoc
 	using clock_type	= std::chrono::high_resolution_clock;
 
 public:
+	/// @brief Constructor for Tictoc
+	/// @param s name or tag
 	Tictoc( std::string_view s );
 
 public:
