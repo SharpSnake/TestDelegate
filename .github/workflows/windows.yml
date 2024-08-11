@@ -42,7 +42,7 @@ jobs:
         platform: x64
         static: 1
         static-runtime: 1
-        toolset: msvc
+        toolset: msvc143
 
     - name: Build solution
       run: msbuild -t:rebuild /p:Configuration=Debug /p:Platform=x64 TestDelegate.sln
