@@ -40,6 +40,8 @@ jobs:
         libraries: filesystem
         configuration: Debug
         platform: x64
+        static: 1
+        static-runtime: 1
         toolset: msvc
 
     - name: Build solution
