@@ -13,7 +13,8 @@ permissions:
 
 jobs:
   msvc2022:
-    runs-on: windows-latest
+    # windows-latest means Windows 10. And automatically installs Visual Studio 2019
+    runs-on: windows-2022
 
     steps:
     - uses: actions/checkout@v2
@@ -21,8 +22,7 @@ jobs:
     - name: Setup msbuild and Visual Studio
       uses: microsoft/setup-msbuild@v2
       with:
-        vs-version: 2022
-        include-windows-sdk: true
+        vs-version: 17.10.5
  
     - name: Build solution
       run: msbuild -t:rebuild /p:Configuration=Debug /p:Platform=x64 TestDelegate.sln
