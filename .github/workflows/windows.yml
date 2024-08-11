@@ -46,6 +46,7 @@ jobs:
       run: msbuild -t:rebuild /p:Configuration=Debug /p:Platform=x64 TestDelegate.sln
       env:
         BOOST_ROOT: ${{ steps.install-boost.outputs.root }}
+        BOOST_LIB: ${{ steps.install-boost.outputs.librarydir }}
 
     #- name: Run tests
     
