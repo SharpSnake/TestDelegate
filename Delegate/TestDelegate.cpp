@@ -118,7 +118,7 @@ void Test_DialogBtnClick()
 	button->MouseClick -= { &VDialog::m_Button_Click_CallBack3, dialog };
 	button->MouseClick -= GlobalOnBtnClk;
 	button->MouseClick -= []( MouseButtons btn, int x, int y ){ cout << "lambda Clk " << btn << "\t" << x << "\t" << y << endl; };
-	button->DoClick( Right, 500, 900 );
+	button->DoClick( Right, 555, 900 );
 	cout << endl;
 
 	button->MouseClick = nullptr;
