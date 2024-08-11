@@ -1,0 +1,31 @@
+name: Windows CI
+​
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  msvc2022:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+ 
+    - name: Setup Visual Studio
+      uses: microsoft/setup-msbuild@v1
+      with:
+        vs-version: 2022
+        include-windows-sdk: true
+ 
+    - name: Build solution
+      run: msbuild /restore /p:Configuration=Debug /p:Platform=x64 TestDelegate.sln
+
+    - name: Run tests
+    
