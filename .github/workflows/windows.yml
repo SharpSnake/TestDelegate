@@ -18,7 +18,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
- 
+
+    # https://github.com/marketplace/actions/setup-windows-10-sdk-action
+    - name: Setup Windows 10 SDK
+    - uses: GuillaumeFalourd/setup-windows10-sdk-action@v2
+      with:
+        sdk-version: 18362
+
+    # Also see: https://github.com/microsoft/setup-msbuild/issues/77
     - name: Setup msbuild and Visual Studio
       uses: microsoft/setup-msbuild@v2
       with:
