@@ -44,6 +44,13 @@ jobs:
         static-runtime: 1
         toolset: msvc143
 
+    # https://github.com/marketplace/actions/print-folder-tree
+    - name: Print boost directory
+      uses: jaywcjlove/github-action-folder-tree@main
+      with:
+        path: ${{ steps.install-boost.outputs.librarydir }}
+        depth: 1
+
     - name: Build solution
       run: msbuild -t:rebuild /p:Configuration=Debug /p:Platform=x64 TestDelegate.sln
       env:
