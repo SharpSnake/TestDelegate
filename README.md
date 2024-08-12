@@ -8,6 +8,7 @@ TestDelegate
 
 [![Build status](https://ci.appveyor.com/api/projects/status/f2on7ikl00nrs8xk?svg=true)](https://ci.appveyor.com/project/SharpSnake/testdelegate)
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/SharpSnake/TestDelegate/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/SharpSnake/TestDelegate/tree/master)
+[![Windows](https://github.com/SharpSnake/TestDelegate/actions/workflows/windows.yml/badge.svg)](https://github.com/SharpSnake/TestDelegate/actions/workflows/windows.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/fd38b54e4dfa4fa8acd13cc9b591b039)](https://www.codacy.com/gh/SharpSnake/TestDelegate/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SharpSnake/TestDelegate&amp;utm_campaign=Badge_Grade)
 ![GitHub top language](https://img.shields.io/github/languages/top/SharpSnake/TestDelegate)
 [![C++ Version](https://img.shields.io/badge/%2Fstd-%3E%3D%20C%2B%2B11-blue)](https://github.com/AnthonyCalandra/modern-cpp-features#c11-language-features)
