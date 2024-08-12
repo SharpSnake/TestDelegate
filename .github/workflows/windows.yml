@@ -42,6 +42,7 @@ jobs:
         toolset: msvc143
 
     # 上一步编译的boost静态库没有版本后缀，会导致后续找不到链接库
+    # 注意命令中一个'%'的地方要改成两个
     - name: Rename libboost
       shell: cmd
       run: for %%f in (${{ steps.install-boost.outputs.librarydir }}\libboost_*.lib) do ren "%%f" "%%~nf-vc143-mt-gd-x64-1_85.lib"
@@ -59,5 +60,7 @@ jobs:
         BOOST_ROOT: ${{ steps.install-boost.outputs.root }}
         BOOST_LIB: ${{ steps.install-boost.outputs.librarydir }}
 
-    #- name: Run tests
+    - name: Run tests
+      shell: cmd
+      run: .\x64\Debug\Delegate.exe
     
