@@ -3,6 +3,14 @@ name: Windows CI
 on:
   push:
     branches: [ master ]
+    paths-ignore:
+        - 'README.md'
+        - '.gitignore'
+        - 'CMakeLists.txt'
+        - 'Delegate/CMakeLists.txt'
+        - 'Dll_foo/CMakeLists.txt'
+        - '.circleci/**'
+        - 'Linux_old/**'
   pull_request:
     branches: [ master ]
   # Allows you to run this workflow manually from the Actions tab
