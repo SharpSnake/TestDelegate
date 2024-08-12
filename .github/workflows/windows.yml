@@ -41,7 +41,7 @@ jobs:
         configuration: Debug
         platform: x64
         static: 1
-        static-runtime: 1
+        # static-runtime: 1
         toolset: msvc143
 
     # https://github.com/marketplace/actions/print-folder-tree
