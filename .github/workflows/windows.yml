@@ -8,8 +8,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-permissions:
-  contents: read
 
 jobs:
   msvc2022:
@@ -41,8 +39,12 @@ jobs:
         configuration: Debug
         platform: x64
         static: 1
-        # static-runtime: 1
         toolset: msvc143
+
+    # 上一步编译的boost静态库没有版本后缀，会导致后续找不到链接库
+    - name: Rename  libboost
+      shell: cmd
+      run: for %f in (${{ steps.install-boost.outputs.librarydir }}\libboost_*.lib) do ren "%f" "%~nf-vc143-mt-gd-x64-1_85.lib"
 
     # https://github.com/marketplace/actions/print-folder-tree
     - name: Print boost directory
