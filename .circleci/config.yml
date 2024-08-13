@@ -22,7 +22,7 @@ jobs:
           name: Update Latest GCC
           command: |
             apt-get update
-            apt install -y software-properties-common
+            DEBIAN_FRONTEND=noninteractive TZ=Asia/Shanghai apt install -y software-properties-common
             add-apt-repository ppa:ubuntu-toolchain-r/test
             apt update
             apt install gcc-14 g++-14
