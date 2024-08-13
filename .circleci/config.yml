@@ -21,6 +21,7 @@ jobs:
       - run:
           name: Update Latest GCC
           command: |
+            apt install software-properties-common
             add-apt-repository ppa:ubuntu-toolchain-r/test
             apt update
             apt install gcc-14 g++-14
