@@ -18,20 +18,20 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          name: Update Latest GCC
-          command: |
-            apt-get update
-            DEBIAN_FRONTEND=noninteractive TZ=Asia/Shanghai apt install -y software-properties-common
-            add-apt-repository ppa:ubuntu-toolchain-r/test
-            apt update
-            apt install gcc-14 g++-14
-            update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 10
-            update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 10
-            update-alternatives --config gcc
-            update-alternatives --config g++
-            gcc --version
-            g++ --version
+      # - run:
+      #     name: Update Latest GCC
+      #     command: |
+      #       apt-get update
+      #       DEBIAN_FRONTEND=noninteractive TZ=Asia/Shanghai apt install -y software-properties-common
+      #       add-apt-repository ppa:ubuntu-toolchain-r/test
+      #       apt update
+      #       apt install gcc-14 g++-14
+      #       update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 10
+      #       update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 10
+      #       update-alternatives --config gcc
+      #       update-alternatives --config g++
+      #       gcc --version
+      #       g++ --version
 
       - run:
           name: Install dependencies
