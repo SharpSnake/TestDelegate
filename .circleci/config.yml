@@ -7,7 +7,7 @@ version: 2.1
 jobs:
   build_ubuntu_manually:
     docker:
-      - image: ubuntu:22.04
+      - image: ubuntu:24.04
       #- image: gcc:latest
     #machine:
     #  image: ubuntu-2004:current
