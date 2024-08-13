@@ -21,13 +21,13 @@ jobs:
       - run:
           name: Update Latest GCC
           command: |
-            sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-            sudo apt update
-            sudo apt install gcc-14 g++-14
-            sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 10
-            sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 10
-            sudo update-alternatives --config gcc
-            sudo update-alternatives --config g++
+            add-apt-repository ppa:ubuntu-toolchain-r/test
+            apt update
+            apt install gcc-14 g++-14
+            update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 10
+            update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 10
+            update-alternatives --config gcc
+            update-alternatives --config g++
             gcc --version
             g++ --version
 
