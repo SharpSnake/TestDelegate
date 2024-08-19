@@ -39,6 +39,7 @@ jobs:
                 build-essential \
                 git \
                 curl \
+                zip \
                 cmake \
 
       - run:
