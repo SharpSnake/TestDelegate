@@ -3,12 +3,12 @@ version: 2.1
 
 jobs:
   build_ubuntu_manually:
-    # docker:
-    #   - image: ubuntu:24.04
+    docker:
+      - image: ubuntu:24.04
     # https://circleci.com/developer/machine/image/ubuntu-2204
-    machine:
-      image: ubuntu-2204:2024.05.1
-    resource_class: arm.large
+    # machine:
+    #   image: ubuntu-2204:2024.05.1
+    # resource_class: arm.large
     
     environment:
       NUM_THERADS: 3
