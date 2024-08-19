@@ -38,6 +38,7 @@ jobs:
             apt-get install -y \
                 build-essential \
                 git \
+                curl \
                 cmake \
 
       - run:
