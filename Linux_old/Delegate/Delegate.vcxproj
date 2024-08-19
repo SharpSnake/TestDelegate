@@ -84,6 +84,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <RemoteOutRelDir>Out</RemoteOutRelDir>
+    <IncludePath>/home/meteora/Dev/vcpkg/installed/x64-linux/include;$(IncludePath)</IncludePath>
+    <LibraryPath>/home/meteora/Dev/vcpkg/installed/x64-linux/lib/;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
