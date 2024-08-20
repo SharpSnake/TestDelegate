@@ -54,7 +54,11 @@ jobs:
       - run:
           name: Set vcpkg path
           command: |
-            ls -l $PWD/vcpkg/installed
+            export VCPKG_ROOT=$PWD/vcpkg
+            export LIBRARY_PATH=$LIBRARY_PATH:$VCPKG_ROOT/installed/x64-linux/lib
+            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$VCPKG_ROOT/installed/x64-linux/lib
+            export C_INCLUDE_PATH=$C_INCLUDE_PATH:$VCPKG_ROOT/installed/x64-linux/include
+            export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$VCPKG_ROOT/installed/x64-linux/include
 
       - run: mkdir -p build && cd build
       - run: g++ -shared -o libDll_foo.so -O2 ./Dll_foo/Tictoc.cpp -std=c++20
