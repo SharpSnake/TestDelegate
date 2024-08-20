@@ -59,7 +59,7 @@ jobs:
             echo "export LD_LIBRARY_PATH=$VCPKG_ROOT/installed/x64-linux/lib" >> ~/.bashrc
             echo "export C_INCLUDE_PATH=$VCPKG_ROOT/installed/x64-linux/include" >> ~/.bashrc
             echo "export CPLUS_INCLUDE_PATH=$VCPKG_ROOT/installed/x64-linux/include" >> ~/.bashrc
-            # source ~/.bashrc
+            source ~/.bashrc
             cat ~/.bashrc
             echo | g++ -v -x c++ -E -
 
