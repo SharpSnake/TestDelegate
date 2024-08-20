@@ -60,6 +60,7 @@ jobs:
             echo "export C_INCLUDE_PATH=$C_INCLUDE_PATH:$VCPKG_ROOT/installed/x64-linux/include" >> ~/.bashrc
             echo "export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$VCPKG_ROOT/installed/x64-linux/include" >> ~/.bashrc
             source ~/.bashrc
+            echo | g++ -v -x c++ -E -
 
       - run: echo | g++ -v -x c++ -E -
       - run: ls -l $VCPKG_ROOT/installed/x64-linux/include/boost
