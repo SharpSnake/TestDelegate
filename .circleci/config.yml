@@ -54,14 +54,14 @@ jobs:
       - run:
           name: Set vcpkg path
           command: |
-            echo "export VCPKG_ROOT=$PWD/vcpkg" >> ~/.bashrc
-            echo "export LIBRARY_PATH=$LIBRARY_PATH:$VCPKG_ROOT/installed/x64-linux/lib" >> ~/.bashrc
-            echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$VCPKG_ROOT/installed/x64-linux/lib" >> ~/.bashrc
-            echo "export C_INCLUDE_PATH=$C_INCLUDE_PATH:$VCPKG_ROOT/installed/x64-linux/include" >> ~/.bashrc
-            echo "export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$VCPKG_ROOT/installed/x64-linux/include" >> ~/.bashrc
-            source ~/.bashrc
-            cat ~/.bashrc
-            echo | g++ -v -x c++ -E -
+            export VCPKG_ROOT=$PWD/vcpkg
+            echo "export LIBRARY_PATH=$VCPKG_ROOT/installed/x64-linux/lib" >> ~/.bashrc
+            echo "export LD_LIBRARY_PATH=$VCPKG_ROOT/installed/x64-linux/lib" >> ~/.bashrc
+            echo "export C_INCLUDE_PATH=$VCPKG_ROOT/installed/x64-linux/include" >> ~/.bashrc
+            echo "export CPLUS_INCLUDE_PATH=$VCPKG_ROOT/installed/x64-linux/include" >> ~/.bashrc
+            # source ~/.bashrc
+            # cat ~/.bashrc
+            # echo | g++ -v -x c++ -E -
 
       - run: echo | g++ -v -x c++ -E -
       - run: ls -l $VCPKG_ROOT/installed/x64-linux/include/boost
