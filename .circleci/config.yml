@@ -60,6 +60,7 @@ jobs:
             export C_INCLUDE_PATH=$C_INCLUDE_PATH:$VCPKG_ROOT/installed/x64-linux/include
             export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$VCPKG_ROOT/installed/x64-linux/include
             echo | g++ -v -x c++ -E -
+            ls -l $VCPKG_ROOT/installed/x64-linux/include/boost
 
       - run: mkdir -p build && cd build
       - run: g++ -shared -o libDll_foo.so -O2 ./Dll_foo/Tictoc.cpp -std=c++20
