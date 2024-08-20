@@ -54,14 +54,12 @@ jobs:
       - run:
           name: Set vcpkg path
           command: |
-            export VCPKG_ROOT=$PWD/vcpkg
-            export LIBRARY_PATH=$LIBRARY_PATH:$VCPKG_ROOT/installed/x64-linux/lib
-            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$VCPKG_ROOT/installed/x64-linux/lib
-            export C_INCLUDE_PATH=$C_INCLUDE_PATH:$VCPKG_ROOT/installed/x64-linux/include
-            export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$VCPKG_ROOT/installed/x64-linux/include
+            echo "export VCPKG_ROOT=$PWD/vcpkg" >> ~/.bashrc
+            echo "export LIBRARY_PATH=$LIBRARY_PATH:$VCPKG_ROOT/installed/x64-linux/lib" >> ~/.bashrc
+            echo "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$VCPKG_ROOT/installed/x64-linux/lib" >> ~/.bashrc
+            echo "export C_INCLUDE_PATH=$C_INCLUDE_PATH:$VCPKG_ROOT/installed/x64-linux/include" >> ~/.bashrc
+            echo "export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$VCPKG_ROOT/installed/x64-linux/include" >> ~/.bashrc
 
-      - run: echo | g++ -v -x c++ -E -
-      - run: ls -l $VCPKG_ROOT/installed/x64-linux/include/boost
       - run: mkdir -p build && cd build
       - run: g++ -shared -o libDll_foo.so -O2 ./Dll_foo/Tictoc.cpp -std=c++20
       - run: g++ -O2 -I ./Dll_foo ./Delegate/TestDelegate.cpp -o TestDelegate -Wl,-L"./" -Wl,-rpath="./" -std=c++20 -lDll_foo -lboost_filesystem
