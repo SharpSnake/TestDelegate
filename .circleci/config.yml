@@ -55,10 +55,10 @@ jobs:
           name: Set vcpkg path
           command: |
             export VCPKG_ROOT=$PWD/vcpkg
-            echo "export LIBRARY_PATH=$VCPKG_ROOT/installed/x64-linux/lib:\$LIBRARY_PATH" >> ~/.bashrc
-            echo "export LD_LIBRARY_PATH=$VCPKG_ROOT/installed/x64-linux/lib:\$LD_LIBRARY_PATH" >> ~/.bashrc
-            echo "export C_INCLUDE_PATH=$VCPKG_ROOT/installed/x64-linux/include:\$C_INCLUDE_PATH" >> ~/.bashrc
-            echo "export CPLUS_INCLUDE_PATH=$VCPKG_ROOT/installed/x64-linux/include:\$CPLUS_INCLUDE_PATH" >> ~/.bashrc
+            echo "export LIBRARY_PATH=\"$VCPKG_ROOT/installed/x64-linux/lib:\$LIBRARY_PATH\"" >> ~/.bashrc
+            echo "export LD_LIBRARY_PATH=\"$VCPKG_ROOT/installed/x64-linux/lib:\$LD_LIBRARY_PATH\"" >> ~/.bashrc
+            echo "export C_INCLUDE_PATH=\"$VCPKG_ROOT/installed/x64-linux/include:\$C_INCLUDE_PATH\"" >> ~/.bashrc
+            echo "export CPLUS_INCLUDE_PATH=\"$VCPKG_ROOT/installed/x64-linux/include:\$CPLUS_INCLUDE_PATH\"" >> ~/.bashrc
             source ~/.bashrc
             cat ~/.bashrc
             echo | g++ -v -x c++ -E -
