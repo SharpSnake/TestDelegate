@@ -15,6 +15,7 @@ jobs:
 
     steps:
       - checkout
+      - run: chmod +x .circleci/vcpkg_deploy_linux.sh
 
       # - run:
       #     name: Update Latest GCC
@@ -54,15 +55,16 @@ jobs:
       - run:
           name: Build project
           command: |
-            chmod +x .circleci/vcpkg_deploy_linux.sh
             source .circleci/vcpkg_deploy_linux.sh
-            echo | g++ -v -x c++ -E -
+            mkdir -p build && cd build
             g++ -shared -o libDll_foo.so -O2 ./Dll_foo/Tictoc.cpp -std=c++20
-            g++ -O2 -I ./Dll_foo ./Delegate/TestDelegate.cpp -o TestDelegate -Wl,-L"./" -Wl,-rpath="./" -std=c++20 -lDll_foo -lboost_filesystem
+            g++ -O2 -I ./Dll_foo ./Delegate/TestDelegate.cpp -o TestDelegate.out -Wl,-L"./" -Wl,-rpath="./" -std=c++20 -lDll_foo -lboost_filesystem
+            ls -l
+            cd ../
             ls -l
       - run: 
           name: Run test
-          command: ./TestDelegate
+          command: ./TestDelegate.out
 
   build_macos:
     macos:
