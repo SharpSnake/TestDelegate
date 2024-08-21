@@ -56,15 +56,14 @@ jobs:
           name: Build project
           command: |
             source .circleci/vcpkg_deploy_linux.sh
-            mkdir -p build && cd build
-            g++ -shared -o libDll_foo.so -O2 ./Dll_foo/Tictoc.cpp -std=c++20
-            g++ -O2 -I ./Dll_foo ./Delegate/TestDelegate.cpp -o TestDelegate.out -Wl,-L"./" -Wl,-rpath="./" -std=c++20 -lDll_foo -lboost_filesystem
-            ls -l
-            cd ../
+            mkdir -p build
+            g++ -shared -o build/libDll_foo.so -O2 ./Dll_foo/Tictoc.cpp -std=c++20
+            g++ -O2 -I ./Dll_foo ./Delegate/TestDelegate.cpp -o build/TestDelegate.out -Wl,-L"./build" -Wl,-rpath="./" -std=c++20 -lDll_foo -lboost_filesystem
+            ls -l ./build
             ls -l
       - run: 
           name: Run test
-          command: ./TestDelegate.out
+          command: ./build/TestDelegate.out
 
   build_macos:
     macos:
