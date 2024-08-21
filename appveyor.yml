@@ -17,6 +17,7 @@ platform: x64
 
 install:
   - cd C:\Tools\vcpkg
+  - vcpkg version
   # - git pull
   # - .\bootstrap-vcpkg.bat
   - vcpkg install boost-filesystem:x64-windows-static
