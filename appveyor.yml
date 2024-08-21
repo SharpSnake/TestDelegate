@@ -1,0 +1,38 @@
+version: 1.0.{build}
+
+skip_commits:
+  files:
+    - 'README.md'
+    - '.gitignore'
+    - '.github/*'
+    - '.circleci/*'
+    - 'CMakeLists.txt'
+    - 'Delegate/CMakeLists.txt'
+    - 'Dll_foo/CMakeLists.txt'
+    - 'Linux_old/*'
+
+image: Visual Studio 2022
+configuration: Debug
+platform: x64
+
+install:
+  - cd C:\Tools\vcpkg
+  - git pull
+  - .\bootstrap-vcpkg.bat
+  - vcpkg install boost-filesystem:x64-windows-static
+  - vcpkg integrate install
+  - cd %APPVEYOR_BUILD_FOLDER%
+
+# environment:
+#   BOOST_ROOT: C:\Libraries\boost_1_85_0
+#   BOOST_LIB: C:\Libraries\boost_1_85_0\lib64-msvc-14.3
+
+build:
+  parallel: true
+  verbosity: minimal
+
+after_build:
+- cmd: C:\projects\testdelegate\x64\Debug\Delegate.exe
+
+cache:
+- c:\tools\vcpkg\installed\

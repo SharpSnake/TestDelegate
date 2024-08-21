@@ -10,6 +10,7 @@ on:
         - 'Delegate/CMakeLists.txt'
         - 'Dll_foo/CMakeLists.txt'
         - '.circleci/**'
+        - 'appveyor.yml'
         - 'Linux_old/**'
   pull_request:
     branches: [ master ]
