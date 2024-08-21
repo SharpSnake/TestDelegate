@@ -15,7 +15,11 @@ jobs:
 
     steps:
       - checkout
-      - run: chmod +x .circleci/vcpkg_deploy_linux.sh
+
+      - run:
+          name: Preparing environment
+          command: |
+            chmod +x ./Scripts/load_vcpkg_x64.sh
 
       # - run:
       #     name: Update Latest GCC
@@ -55,10 +59,11 @@ jobs:
       - run:
           name: Build project
           command: |
-            source .circleci/vcpkg_deploy_linux.sh
+            source ./Scripts/load_vcpkg_x64.sh
             mkdir -p build
             g++ -shared -o build/libDll_foo.so -O2 ./Dll_foo/Tictoc.cpp -std=c++20
             g++ -O2 -I ./Dll_foo ./Delegate/TestDelegate.cpp -o build/TestDelegate.out -Wl,-L"./build" -Wl,-rpath="./" -std=c++20 -lDll_foo -lboost_filesystem
+      
       - run: 
           name: Run test
           command: cp -r ./build ./release && cd ./release && ./TestDelegate.out
