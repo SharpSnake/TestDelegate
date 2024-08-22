@@ -10,6 +10,7 @@ skip_commits:
     - 'Delegate/CMakeLists.txt'
     - 'Dll_foo/CMakeLists.txt'
     - 'Linux_old/*'
+    - 'Scripts/*'
 
 image: Visual Studio 2022
 configuration: Debug

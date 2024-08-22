@@ -9,6 +9,7 @@ on:
         - 'CMakeLists.txt'
         - 'Delegate/CMakeLists.txt'
         - 'Dll_foo/CMakeLists.txt'
+        - 'Scripts/**'
         - '.circleci/**'
         - 'appveyor.yml'
         - 'Linux_old/**'
@@ -26,18 +27,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # https://github.com/marketplace/actions/setup-windows-10-sdk-action
-    # - name: Setup Windows 10 SDK
-    #   uses: GuillaumeFalourd/setup-windows10-sdk-action@v2
-    #   with:
-    #     sdk-version: 18362
-
-    # Also see: https://github.com/microsoft/setup-msbuild/issues/77
+    # Also see: https://github.com/marketplace/actions/setup-msbuild
     - name: Setup msbuild and Visual Studio
       uses: microsoft/setup-msbuild@v2
       with:
         vs-version: 17.10.6
-
 
     - name: Install vcpkg
       run: |
@@ -45,37 +39,9 @@ jobs:
         .\vcpkg\bootstrap-vcpkg.bat
         .\vcpkg\vcpkg install boost-filesystem:x64-windows-static
         .\vcpkg\vcpkg integrate install
- 
-    # # https://github.com/marketplace/actions/build-boost
-    # - name: Install boost
-    #   uses: egor-tensin/build-boost@v1
-    #   id: install-boost
-    #   with:
-    #     version: 1.85.0
-    #     libraries: filesystem
-    #     configuration: Debug
-    #     platform: x64
-    #     static: 1
-    #     toolset: msvc143
-
-    # # 上一步编译的boost静态库没有版本后缀，会导致后续找不到链接库
-    # # 注意命令中一个'%'的地方要改成两个
-    # - name: Rename libboost
-    #   shell: cmd
-    #   run: for %%f in (${{ steps.install-boost.outputs.librarydir }}\libboost_*.lib) do ren "%%f" "%%~nf-vc143-mt-gd-x64-1_85.lib"
-
-    # # https://github.com/marketplace/actions/print-folder-tree
-    # - name: Print boost directory
-    #   uses: jaywcjlove/github-action-folder-tree@main
-    #   with:
-    #     path: ${{ steps.install-boost.outputs.librarydir }}
-    #     depth: 1
 
     - name: Build solution
       run: msbuild -t:rebuild /p:Configuration=Debug /p:Platform=x64 TestDelegate.sln
-      # env:
-      #   BOOST_ROOT: ${{ steps.install-boost.outputs.root }}
-      #   BOOST_LIB: ${{ steps.install-boost.outputs.librarydir }}
 
     - name: Run tests
       shell: cmd
